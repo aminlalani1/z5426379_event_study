@@ -15,21 +15,20 @@
 # ----------------------------------------------------------------------------
 
 
+import pandas as pd
+
+import zid_project2_characteristics as cha
+# We've imported other needed scripts and defined aliases. Please keep using the same aliases for them in this project.
+import zid_project2_etl as etl
+import zid_project2_portfolio as pf
 # ----------------------------------------------------------------------------
 # Part 2: import modules inside the project2 package
 # ----------------------------------------------------------------------------
 # Create import statements so that the module config.py and util.py (inside the project2 package)
 # are imported as "cfg", and "util"
-#
-# <COMPLETE THIS PART>
 
-
-# We've imported other needed scripts and defined aliases. Please keep using the same aliases for them in this project.
-import zid_project2_etl as etl
-import zid_project2_characteristics as cha
-import zid_project2_portfolio as pf
-
-import pandas as pd
+from project2 import config as cfg
+from project2 import util
 
 
 # -----------------------------------------------------------------------------------------------
@@ -167,7 +166,13 @@ def get_avg(df: pd.DataFrame, year):
         dtype: float64
 
     """
-    # <COMPLETE THIS PART>
+    # Filter DataFrame for the specified year
+    df_year = df[df.index.year == year]
+
+    # Calculate the average of all columns for the specified year
+    avg_values = df_year.mean()
+
+    return avg_values
 
 
 def get_cumulative_ret(df):
@@ -195,9 +200,9 @@ def get_cumulative_ret(df):
         where r1, ..., rN represents monthly returns
 
     """
-    # <COMPLETE THIS PART>
+    cumulative_returns = (1 + df).cumprod() - 1
 
-
+    return cumulative_returns
 # ----------------------------------------------------------------------------
 # Part 8: Answer questions
 # ----------------------------------------------------------------------------
