@@ -25,7 +25,7 @@ import zid_project2_portfolio as pf
 # Part 2: import modules inside the project2 package
 # ----------------------------------------------------------------------------
 # Create import statements so that the module config.py and util.py (inside the project2 package)
-# are imported as "cfg", and "util"
+# are imported as "cfg", and "util" done
 
 from project2 import config as cfg
 from project2 import util
